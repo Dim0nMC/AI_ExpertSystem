@@ -88,6 +88,47 @@ criteria = {
 
 }
 
+class KnowledgeBase():
+
+  def __init__(self, criteria):
+    self.criteria = criteria
+    self.memory = {}
+
+  def get(self, name):
+    if name in self.memory.keys():
+      return self.memory[name]
+    for key in self.criteria.keys():
+      if key == name or key.startswith(name + ":"):
+        value = 'y' if key == name else key.split(':')[1]
+        result = self.evaluate(self.criteria[key], field=name)
+        if result == 'y':
+          self.memory[name] = value
+          return value
+    result = self.evaluate(self.criteria['default'], field=name)
+    self.memory[name] = result
+    return result
+
+  def evaluate(self, expression, field=None):
+    if isinstance(expression, Query):
+      print(field)
+      return expression.prompt()
+    elif isinstance(expression, Condition):
+      return self.evaluate(expression.value)
+    elif isinstance(expression, All) or isinstance(expression, list):
+      expression = expression.value if isinstance(expression, All) else expression
+      for item in expression:
+        if self.evaluate(item) == 'n':
+          return 'n'
+      return 'y'
+    elif isinstance(expression, Any):
+      for item in expression.value:
+        if self.evaluate(item) == 'y':
+          return 'y'
+      return 'n'
+    elif isinstance(expression, str):
+      return self.get(expression)
+    else:
+      print("Unknown expression: {}".format(expression))
 
 kb = KnowledgeBase(criteria)
 
