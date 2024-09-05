@@ -147,6 +147,60 @@ criteria = {
     "Track:Brother Louie": Condition(
         All(["Genre:pop", "Country:Germany", "Period:90s", "Tempo:fast", "Disco"])
     ),
+        'Track:Ветер':
+    Condition(
+        All([
+            'Genre:rock', 'Country:Russia', 'Period:2000s', 'Tempo:slow',
+            'Mood:thoughtful'
+        ])),
+    'Track:Я сошла с ума':
+    Condition(
+        All([
+            'Genre:pop', 'Country:Russia', 'Period:2000s', 'Tempo:fast',
+            'Mood:sad', 'Mood:thoughtful'
+        ])),
+    'Track:I Wonder':
+    Condition(
+        All([
+            'Genre:electronic', 'Country:USA', 'Period:2000s', 'Tempo:fast',
+            'Mood:happy'
+        ])),
+    'Track:Rap God':
+    Condition(All(['Genre:Rap', 'Country:USA', 'Period:2010s', 'Tempo:fast'])),
+    'Track:Lost Angeles':
+    Condition(
+        All([
+            'Genre:Trap', 'Genre:Hip-Hop', 'Country:Russia', 'Period:2020s',
+            'Tempo:fast'
+        ])),
+    'Track:The Show Must Go On':
+    Condition(
+        All([
+            'Genre:rock', 'Country:UK', 'Period:90s',
+            'Tempo:slow', 'Mood:tense'
+        ])),
+    'Track:U Cant Touch This':
+    Condition(
+        All([
+            Any(['Genre:pop', 'Genre:rap']), 'Country:USA', 'Period:90s',
+            'Tempo:fast', 'Mood:happy'
+        ])),
+    'Track:Акид':
+    Condition(
+        All([
+            'Genre:rap', 'Country:Russia', 'Period:2010s', 'Tempo:fast',
+            'For Workout'
+        ])),
+    'Track:В одного':
+    Condition(
+        All([
+            'Genre:rap', 'Country:Russia', 'Period:2010s', 'Tempo:fast',
+            'Party'
+        ])),
+    'Track:London Bridge':
+    Condition(All(['Genre:pop', 'Country:USA', 'Period:2000s', 'Party'])),
+    'Track:Junkie':
+    Condition(All(['Genre:rap', 'Country:USA', 'Period:2010s', 'For Workout']))
 }
 
 
